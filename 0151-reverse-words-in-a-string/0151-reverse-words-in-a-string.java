@@ -5,10 +5,8 @@ class Solution {
         int start = 0, end = n-1;
         while(start <= end) {
             String temp = arr[start];
-            arr[start] = arr[end];
-            arr[end] = temp;
-            start++;
-            end--;
+            arr[start++] = arr[end];
+            arr[end--] = temp;
         }
         StringBuffer sb = new StringBuffer();
         for(int i=0;i<n;i++) {
