@@ -1,7 +1,7 @@
 class Solution {
     int[][] dirs = {{-1, 0}, {1, 0}, {0, 1}, {0, -1}};
     public int orangesRotting(int[][] grid) {
-        if (grid == null || grid.length == 0 || grid[0].length == 0) {
+        if (grid == null || grid.length == 0) {
             return -1;
         }
         int m = grid.length;
