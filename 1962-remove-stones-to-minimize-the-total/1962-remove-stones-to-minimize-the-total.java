@@ -7,8 +7,8 @@ class Solution {
         int ans = 0;
         while (k-- > 0 ) { 
             int i = pq.poll();
-            i = i - (int)Math.floor(i/2);
-            pq.add(i);
+            //i = i - (int)Math.floor(i/2);
+            pq.add(i-i/2);
         }
         for(int i:pq) {
             ans += i;
