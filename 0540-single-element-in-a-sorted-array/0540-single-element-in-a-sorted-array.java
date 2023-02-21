@@ -1,9 +1,11 @@
 class Solution {
     public int singleNonDuplicate(int[] nums) {
-        int xor = 0;
-        for(int i=0;i<nums.length;i++) {
-            xor = xor ^ nums[i];
+        
+        for(int i=0;i<nums.length-1;i=i+2) {
+            if(nums[i] != nums[i+1]) {
+                return nums[i];
+            }
         }
-        return xor;
+        return nums[nums.length-1];
     }
 }
