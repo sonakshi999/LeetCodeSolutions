@@ -6,7 +6,8 @@ class Solution {
             char c = s.charAt(i);
             count += vowel.contains(c)? 1 : 0;
         }
-        int ans = count;
+        int ans = count; // as count will be diff in each window this variable will keep track of maximum count;
+        
         for(int i=k;i<s.length();i++) {
             char c = s.charAt(i);
             char kk = s.charAt(i-k);
