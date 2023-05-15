@@ -16,12 +16,10 @@ class Solution {
             l.add(curr);
             curr = curr.next;
         }
-        int len = l.size();
+        int n = l.size();
         int temp = l.get(k-1).val;
-        l.get(k-1).val = l.get(len-k).val;
-        l.get(len-k).val = temp;
-        
+        l.get(k-1).val = l.get(n-k).val;
+        l.get(n-k).val = temp;
         return head;
-        
     }
 }
