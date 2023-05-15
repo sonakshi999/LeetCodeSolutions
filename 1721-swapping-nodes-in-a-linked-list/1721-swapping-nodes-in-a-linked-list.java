@@ -10,16 +10,19 @@
  */
 class Solution {
     public ListNode swapNodes(ListNode head, int k) {
-        List<ListNode> l = new ArrayList<>();
-        ListNode curr = head;
-        while(curr != null) {
-            l.add(curr);
-            curr = curr.next;
+        ListNode first = head, second = head;
+        for(int i=0;i<k-1;i++) {
+            first = first.next; // first reached to kth from begin
         }
-        int n = l.size();
-        int temp = l.get(k-1).val;
-        l.get(k-1).val = l.get(n-k).val;
-        l.get(n-k).val = temp;
+        ListNode temp = first;
+        while(temp.next != null) {
+            temp = temp.next;
+            second = second.next;
+        }
+        
+        int x = first.val;
+        first.val = second.val;
+        second.val = x;
         return head;
     }
 }
