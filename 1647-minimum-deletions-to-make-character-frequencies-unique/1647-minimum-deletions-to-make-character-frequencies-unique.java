@@ -1,27 +1,29 @@
 class Solution {
-    public int minDeletions(String ss) {
+    public int minDeletions(String s) {
         Map<Character,Integer> mp = new HashMap<>();
-        int n = ss.length();
-        
-        for(int i=0;i<n;i++) {
-            char ch = ss.charAt(i);
-            mp.put(ch,mp.getOrDefault(ch,0)+1);
+        for(int i=0;i<s.length();i++) {
+            char c = s.charAt(i);
+            mp.put(c,mp.getOrDefault(c,0)+1);
         }
-        Set<Integer> s = new HashSet<>();
-        int ans = 0;
-        for(char c : mp.keySet()){
-            int freq = mp.get(c);
-            if(!s.contains(freq)){
-                s.add(freq);
+        
+        Set<Integer> ans = new HashSet<>();
+        int res = 0;
+        
+        for(char c : mp.keySet()) {
+            int i = mp.get(c);
+            if(!ans.contains(i)){
+                ans.add(i);
             }else{
-                while(freq >0 && s.contains(freq)) {
-                    ans++;
-                    freq--;
+                while(ans.contains(i) && i>0) {
+                    res++;
+                    i--;
                 }
-                if(freq>0){s.add(freq);}
+                if(i>0) {
+                    ans.add(i);
+                }
             }
         }
+        return res;
         
-        return ans;
     }
 }
