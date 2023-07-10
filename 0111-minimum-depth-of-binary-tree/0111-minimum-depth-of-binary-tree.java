@@ -26,14 +26,12 @@ class Solution {
             int sz = l.size();
             for(int i=0;i<sz;i++) {
                 TreeNode temp = l.remove();
-                if(temp==null){
-                    continue;
-                }
+            
                 if(temp.left==null && temp.right==null){
                     return ans;
                 }
-                l.add(temp.left);
-                l.add(temp.right);
+                if(temp.left!=null)l.add(temp.left);
+                if(temp.right!=null)l.add(temp.right);
             }
             ans++;
         }
