@@ -1,12 +1,12 @@
 class Solution {
     public int arrangeCoins(int n) {
-        int len=1;
-        int res=0;
-        while(n>=len) {
-            n=n-len;
-            len++;
-            res++;
+        int stairs = 0;
+        int step = 1;
+        while(n >= step){
+            n = n-step;
+            step++;
+            stairs++;
         }
-        return res;
+        return stairs;
     }
 }
