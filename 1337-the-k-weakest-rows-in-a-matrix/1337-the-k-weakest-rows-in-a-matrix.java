@@ -14,7 +14,7 @@ class Solution {
             }
             count[i] = temp;
         }
-        int ab[][] = new int[r][r];
+        int ab[][] = new int[r][2];
         for(int i=0;i<r;i++) {
             ab[i][0]=count[i];
             ab[i][1]=i;
