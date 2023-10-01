@@ -1,25 +1,20 @@
 class Solution {
     public String reverseWords(String s) {
-        String[] words=s.split(" ");
-        StringBuilder sb=new StringBuilder();
-        for(String word:words) {
-            int len=word.length();
-            int st=0;
-            String ww=reverse(word,st,len-1);
-            sb.append(ww);
+        String[] arr = s.split(" ");
+        StringBuffer sb = new StringBuffer();
+        for(String str:arr) {
+            String st = reverse(str);
+            sb.append(st);
             sb.append(" ");
         }
-        return sb.toString().trim();
+        //sb.trim();
+        return new String(sb).trim();
     }
-    public String reverse(String s,int start,int end) {
-        char[] c=s.toCharArray();
-        while(start<end) {
-            char cc=c[start];
-            c[start]=c[end];
-            c[end]=cc;
-            start++;
-            end--;
+    String reverse(String s) {
+        StringBuffer sb = new StringBuffer();
+        for(int i=s.length()-1;i>=0;i--) {
+            sb.append(s.charAt(i));
         }
-        return new String(c);
+        return new String(sb);
     }
 }
