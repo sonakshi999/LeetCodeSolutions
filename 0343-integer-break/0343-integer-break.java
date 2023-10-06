@@ -1,24 +1,14 @@
 class Solution {
-    int[] memo;
     public int integerBreak(int n) {
         if(n<=3) {
             return n-1;
         }
-        memo = new int[n+1];
-        return dp(n);
-    }
-    int dp(int n) {
-        if(n<=3){
-            return n;
+        int ans = 1;
+        while(n > 4) {
+            ans = ans * 3;
+            n = n-3;
         }
-        if(memo[n] != 0) {
-            return memo[n];
-        }
-        int ans = n;
-        for(int i=2;i<=n;i++) {
-            ans = Math.max(i*dp(n-i),ans);
-        }
-        memo[n]=ans;
+        ans = ans * n;
         return ans;
     }
 }
