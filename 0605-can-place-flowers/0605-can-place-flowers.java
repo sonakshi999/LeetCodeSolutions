@@ -3,27 +3,12 @@ class Solution {
         int count = 0;
         for(int i=0;i<fb.length;i++) {
             if(fb[i]==0) {
-                if((i-1) >= 0 && (i+1) <=fb.length-1){
-                    if(fb[i-1]==0 && fb[i+1]==0) {
-                        count++;
-                        fb[i]=1;
-                    }
-                    
-                }else if((i-1)<0 && (i+1) <=fb.length-1){
-                    if(fb[i+1]==0){
-                        count++;
-                        fb[i]=1;
-                    }
-                    
-                }else if((i-1) >= 0 && (i+1) > fb.length-1) {
-                    if(fb[i-1]==0){
-                        count++;
-                        fb[i]=1;
-                    }
-                }else if(i-1<0 && i+1 >fb.length-1){
-                    count++;
-                    fb[i]=1;
-                }
+               boolean left = ((i-1)==-1 || fb[i-1]==0);
+               boolean right = ((i+1)==fb.length || fb[i+1]==0);
+               if(left && right) {
+                   count++;
+                   fb[i]=1;
+               }
             }
         }
         return n<=count;
