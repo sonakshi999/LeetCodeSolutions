@@ -1,16 +1,17 @@
 class Solution {
     public String reverseWords(String s) {
-        String arr[] = s.split("\\s+");
-        int n = arr.length;
-        int start = 0, end = n-1;
-        while(start <= end) {
-            String temp = arr[start];
-            arr[start++] = arr[end];
-            arr[end--] = temp;
+        String[] words = s.split("\\s+");
+        for(int i=0;i<words.length/2;i++) {
+            String temp = words[i];
+            words[i]=words[words.length-i-1];
+            words[words.length-i-1]=temp;
         }
-        StringBuffer sb = new StringBuffer();
-        for(int i=0;i<n;i++) {
-            sb.append(arr[i]+" ");
+        StringBuilder sb = new StringBuilder();
+        for(int i=0;i<words.length;i++) {
+            sb.append(words[i]);
+            if(i!=words.length-1){
+                sb.append(" ");
+            }
         }
         return new String(sb).trim();
     }
