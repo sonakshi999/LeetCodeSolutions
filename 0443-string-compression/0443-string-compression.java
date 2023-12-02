@@ -6,7 +6,7 @@ class Solution {
             return n;
         }
         List<Character> l = new ArrayList<>();
-        for(int i=0;i<n;i++) {
+        for(int i=0;i<n;) {
             char curr = chars[i];
             int j = i+1;
             int count = 1;
@@ -22,7 +22,7 @@ class Solution {
                     l.add(c);
                 }
             }
-            i = j-1;
+            i = j;
         }
         int sz=l.size();
         for(int i=0;i<sz;i++) {
