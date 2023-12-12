@@ -1,20 +1,31 @@
 class Solution {
     public int maxVowels(String s, int k) {
-        Set<Character> vowel = Set.of('a','e','i','o','u');
-        int count = 0;
+        int n = s.length();
+        int count = 0, max = 0;
         for(int i=0;i<k;i++) {
-            char c = s.charAt(i);
-            count += vowel.contains(c)? 1 : 0;
+            if(isVowel(s.charAt(i))){
+                count++;
+            }
         }
-        int ans = count; // as count will be diff in each window this variable will keep track of maximum count;
-        
-        for(int i=k;i<s.length();i++) {
-            char c = s.charAt(i);
-            char kk = s.charAt(i-k);
-            count += vowel.contains(c)? 1 : 0;
-            count -= vowel.contains(kk)? 1 : 0;
-            ans = Math.max(count,ans);
+        max = count;
+        for(int i = k;i<n;i++) {
+            if(isVowel(s.charAt(i))) {
+                if(!isVowel(s.charAt(i-k))){
+                    count++;
+                }
+            }else{
+                if(isVowel(s.charAt(i-k))){
+                    count--;
+                }
+            }
+            max = Math.max(max,count);
         }
-        return ans;
+        return max;
+    }
+    boolean isVowel(char c) {
+        if(c=='a'||c=='e'||c=='i'||c=='o'||c=='u'){
+            return true;
+        }
+        return false;
     }
 }
