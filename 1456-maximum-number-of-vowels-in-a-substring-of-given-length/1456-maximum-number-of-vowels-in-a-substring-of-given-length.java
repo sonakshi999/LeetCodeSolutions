@@ -10,13 +10,10 @@ class Solution {
         max = count;
         for(int i = k;i<n;i++) {
             if(isVowel(s.charAt(i))) {
-                if(!isVowel(s.charAt(i-k))){
-                    count++;
-                }
-            }else{
-                if(isVowel(s.charAt(i-k))){
-                    count--;
-                }
+               count++;
+            }
+            if(isVowel(s.charAt(i-k))){
+                count--;
             }
             max = Math.max(max,count);
         }
