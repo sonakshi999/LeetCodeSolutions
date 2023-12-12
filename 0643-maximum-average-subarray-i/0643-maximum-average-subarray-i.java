@@ -4,11 +4,10 @@ class Solution {
         int n = nums.length;
         for(int i = 0; i <= n-k; i++) {
             int loop = k;
-            int sum = nums[i];
-            int j = i+1;
-            loop--;
+            int sum = 0;
+            int j = i;
             while(loop > 0) {
-               sum += nums[j];
+                sum += nums[j];
                 j++;
                 loop--;
             }
@@ -16,5 +15,6 @@ class Solution {
         }
         double avg = (double) max/k;
         return avg;
+     
+        }
     }
-}
