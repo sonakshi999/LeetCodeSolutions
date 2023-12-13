@@ -6,7 +6,7 @@ class Solution {
             if(nums[i] == 0) {
                 k--;
             }
-            if(k < 0) { 
+            if(k < 0) {  // 1 1 1 1 , k = 0
                 if(nums[j] == 0) {
                     k++;
                 }
