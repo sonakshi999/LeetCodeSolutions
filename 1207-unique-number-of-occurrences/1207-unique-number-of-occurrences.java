@@ -4,13 +4,12 @@ class Solution {
         for(int n : arr) {
             mp.put(n,mp.getOrDefault(n,0)+1);
         }
-        System.out.println(mp);
         Set<Integer> ss = new HashSet<>();
-        for(Map.Entry<Integer,Integer> entry : mp.entrySet()) {
-            if(ss.contains(entry.getValue())){
+        for(Integer value : mp.values()) {
+            if(ss.contains(value)){
                 return false;
             }
-            ss.add(entry.getValue());
+            ss.add(value);
         }
         return true;
     }
