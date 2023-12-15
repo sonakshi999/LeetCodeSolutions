@@ -1,27 +1,25 @@
 class Solution {
     public boolean closeStrings(String word1, String word2) {
-        if(word1.equals(word2)) return true;
-        int a[] = new int[26];
-        int b[] = new int[26];
-        int n = word1.length();
-        int m = word2.length();
-        if(n != m) return false;
-        for(int i=0;i<n;i++) {
-            a[word1.charAt(i)-'a']++;
+        int n1 = word1.length();
+        int n2 = word2.length();
+        if(n1 != n2) {
+            return false;
         }
-        for(int i=0;i<m;i++) {
-            b[word2.charAt(i)-'a']++;
+        Map<Character,Integer> m1 = new HashMap<>();
+        Map<Character,Integer> m2 = new HashMap<>();
+        for(int i=0;i<n1;i++) {
+            m1.put(word1.charAt(i),m1.getOrDefault(word1.charAt(i),0)+1);
         }
-        for(int i=0;i<26;i++) {
-            if((a[i]==0 && b[i]!=0) || (a[i]!=0 && b[i]==0)) {
-                return false;
-            }
+       
+        for(int i=0;i<n2;i++) {
+            m2.put(word2.charAt(i),m2.getOrDefault(word2.charAt(i),0)+1);
         }
-        Arrays.sort(a);
-        Arrays.sort(b);
-        for(int i=0;i<26;i++) {
-            if(a[i]!=b[i]) return false;
-        }
-        return true;
+        Set<Character> s1 = new HashSet<>(m1.keySet());
+        Set<Character> s2 = new HashSet<>(m2.keySet());
+        List<Integer> f1 = new ArrayList<>(m1.values());
+        List<Integer> f2 = new ArrayList<>(m2.values());
+        Collections.sort(f1);
+        Collections.sort(f2);
+        return (s1.equals(s2) && f1.equals(f2));
     }
 }
