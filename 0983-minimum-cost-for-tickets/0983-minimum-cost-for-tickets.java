@@ -9,8 +9,8 @@ class Solution {
         for (int day : days) {
             isTravelNeeded.add(day);
         }
-
-        return solve(1,days,costs,dp);
+       
+        return solve(days[0],days,costs,dp);
     }
     int solve(int currDay, int[] days , int[] costs, int[] dp) {
         if (currDay > days[days.length - 1]) {
