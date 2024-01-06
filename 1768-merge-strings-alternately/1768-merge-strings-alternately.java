@@ -4,20 +4,17 @@ class Solution {
         int len2 = word2.length();
         int len = Math.min(len1,len2);
         String ans = new String();
-        int j = 0, k = 0;
-        for(int i=0;i<(2*len);i++) {
-            if(i%2==0) {
-                ans = ans + word1.charAt(j++);
-            }else {
-                ans = ans + word2.charAt(k++);
-            }
+        
+        for(int i=0;i<len;i++) {
+            ans += word1.charAt(i);
+            ans += word2.charAt(i);
         }
-        while(j < len1) {
-            ans = ans + word1.charAt(j++);
+        if(len < len1) {
+            ans = ans + word1.substring(len,len1);
             
         }
-        while(k < len2) {
-            ans = ans + word2.charAt(k++);
+        if (len < len2) {
+            ans = ans + word2.substring(len,len2);
         }
         return ans;
     }
