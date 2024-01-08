@@ -15,7 +15,7 @@ class Solution {
         if(m==0) {
             return n;
         }
-        return gcd(n-m,m);
+        return gcd(n%m,m);
     }
     
 }
