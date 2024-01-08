@@ -1,33 +1,29 @@
 class Solution {
     public String reverseVowels(String s) {
-        char[] c=s.toCharArray();
-        int start = 0;
-        int end = s.length()-1;
-        while(start < end) {
-            if(isVowel(s.charAt(start)) && isVowel(s.charAt(end))) {
-                swap(c,start,end);
-                start++;
-                end--;
+        Set<Character> set = new HashSet<>(Arrays.asList('a','e','i','o','u','A','E','I','O','U'));
+        int i = 0, j = s.length()-1;
+        char[] c = s.toCharArray();
+        while(i<j) {
+            if(set.contains(c[i]) && set.contains(c[j])) {
+                swap(c,i,j);
+                i++;
+                j--;
+                
             }
-            if(!isVowel(s.charAt(start))){
-                start++;
+            if(!set.contains(c[i])){
+                i++;
             }
-            if(!isVowel(s.charAt(end))){
-                end--;
+            if(!set.contains(c[j])) {
+                j--;
             }
         }
         return new String(c);
     }
-    boolean isVowel(char c) {
-        if(c=='a'||c=='e'||c=='i'||c=='o'||c=='u'||c=='A'||c=='E'||c=='I'||c=='O'||c=='U') {
-            return true;
-        }
-        return false;
+    void swap(char[] c,int i,int j) {
+        
+        char temp = c[i];
+        c[i]=c[j];
+        c[j]=temp;
+        
     }
-    void swap(char[] c,int a, int b){
-        char temp = c[a];
-        c[a] = c[b];
-        c[b] = temp;
-    }
-    
 }
