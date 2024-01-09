@@ -1,14 +1,13 @@
 class Solution {
     public boolean increasingTriplet(int[] nums) {
-        int small = Integer.MAX_VALUE;
-        int mid = Integer.MAX_VALUE;
-        for(int i=0;i<nums.length;i++) {
-            int curr = nums[i];
-            if(curr <= small) {
-                small = curr;
-            }else if(curr <= mid) {
-                mid = curr;
-            }else{
+        int first = Integer.MAX_VALUE;
+        int second = Integer.MAX_VALUE;
+        for(int n : nums) {
+            if(n < first) {
+                first = n;
+            }else if(n>first && n < second){
+                second = n;
+            }else if(n > first && n>second) {
                 return true;
             }
         }
