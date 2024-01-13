@@ -1,33 +1,28 @@
 class Solution {
     public int compress(char[] chars) {
-        
         int n = chars.length;
-        if(n<=1) {
-            return n;
-        }
-        List<Character> l = new ArrayList<>();
-        for(int i=0;i<n;) {
-            char curr = chars[i];
-            int j = i+1;
+        List<Character> list = new ArrayList<>();
+        for(int i=0;i<n;i++) {
+            list.add(chars[i]);
             int count = 1;
-            while(j<n && chars[j]==curr) {
+            int j = i+1;
+            while(j<chars.length && chars[i]==chars[j]){
                 count++;
                 j++;
             }
-            l.add(curr);
-            if(count > 1) {
-                String numberAsString = String.valueOf(count); 
-                char[] cha = numberAsString.toCharArray();
-                for(char c : cha) {
-                    l.add(c);
+            if(count>1) {
+                String s = String.valueOf(count);
+                char ch[] = s.toCharArray();
+                for(int ii=0;ii<ch.length;ii++) {
+                    list.add(ch[ii]);
                 }
             }
-            i = j;
+            i = j-1;
         }
-        int sz=l.size();
-        for(int i=0;i<sz;i++) {
-            chars[i] = l.get(i);
+        int len = list.size();
+        for(int i=0;i<len;i++) {
+            chars[i]=list.get(i);
         }
-        return sz;
+        return len;
     }
 }
