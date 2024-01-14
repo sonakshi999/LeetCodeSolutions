@@ -11,9 +11,10 @@ class Solution {
         max = count;
         for(i=k;i<n;i++) {
             if(set.contains(s.charAt(i))){
-                count += set.contains(s.charAt(i-k))?0:1;
-            }else{
-                count += set.contains(s.charAt(i-k))?-1:0;
+                count++;
+            }
+            if(set.contains(s.charAt(i-k))){
+                count--;
             }
             max = Math.max(max,count);
         }
