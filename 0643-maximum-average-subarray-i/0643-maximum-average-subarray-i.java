@@ -10,6 +10,6 @@ class Solution {
             sum = sum+nums[i]-nums[i-k];
             max = Math.max(max,sum);
         }
-        return (double)max/(double)k;
+        return (double)max/k;
     }
 }
