@@ -3,20 +3,13 @@ class Solution {
         Set<Integer> set = new HashSet<>();
         while(n != 1  && !set.contains(n)) {
             set.add(n);
-            if(n>10) {
-                int curr = 0;
-                while(n>1){
-                    int temp = n% 10;
-                    n = n/10;
-                    curr += temp*temp;
-                }
-                System.out.print(n+"  n ");
-                n = curr + n*n;
-                System.out.print(n+"p ");
-            }else{
-                n = n*n;
-                System.out.print(n+"s ");
+            int sum = 0;
+            while(n>0){
+                int temp = n % 10;
+                n = n/10;
+                sum += temp*temp;
             }
+            n = sum;
         }
         return n==1;
     }
