@@ -33,16 +33,9 @@ class Solution {
                     q.add(node.right);
                 }
             }
-            ans.add(temp);
+            ans.add(0,temp);
         }
-        int start = 0, end = ans.size()-1;
-        while(start < end) {
-            List<Integer> temp = ans.get(start);
-            ans.set(start, ans.get(end));
-            ans.set(end,temp);
-            start++;
-            end--;
-        }
+        
         return ans;
     }
 }
