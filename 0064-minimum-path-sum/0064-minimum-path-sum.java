@@ -4,30 +4,25 @@ class Solution {
         int m = grid[0].length;
         
         int dp[][] = new int[n][m];
+        for(int row[]:dp) {
+            Arrays.fill(row,-1);
+        }
         
         return find(n-1,m-1,grid,dp);
     }
     
-    int find(int i,int j,int[][] grid,int[][] dp) {
+    static int find(int i,int j,int[][] matrix,int[][] dp) {
+        if (i == 0 && j == 0)
+            return matrix[0][0];
         if(i<0 || j<0) {
-            return Integer.MAX_VALUE;
+            return (int) 100000000;
         }
-        if(i==0 && j==0) {
-            return grid[i][j];
-        }
-        
-        if(dp[i][j] != 0) {
+        if(dp[i][j] != -1) {
             return dp[i][j];
         }
-        int up = Integer.MAX_VALUE;
-        int left = Integer.MAX_VALUE;
-        if(i>0){ 
-            up = grid[i][j]+find(i-1,j,grid,dp);
-        }
-        if(j>0) {
-            left = grid[i][j]+find(i,j-1,grid,dp);
-        }
         
+        int up = matrix[i][j] + find(i-1,j,matrix,dp);
+        int left = matrix[i][j] + find(i,j-1,matrix,dp);
         return dp[i][j] = Math.min(up,left);
     }
 }
