@@ -15,7 +15,7 @@ class Solution {
         if (i == 0 && j == 0)
             return matrix[0][0];
         if(i<0 || j<0) {
-            return (int) 100000000;
+            return 10000000;
         }
         if(dp[i][j] != -1) {
             return dp[i][j];
