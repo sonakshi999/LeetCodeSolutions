@@ -1,22 +1,24 @@
+
 class Solution {
     public long maximumHappinessSum(int[] happiness, int k) {
-        
         int n = happiness.length;
-        int index = n-1;
-        Arrays.sort(happiness);
+        PriorityQueue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());
+        for(int i=0;i<n;i++) {
+            pq.add(happiness[i]);
+        }
         
+        long ans = 0;
         int counter = 0;
-        long sum = 0;
         
         for(int i=0;i<k;i++) {
-            happiness[index] -= counter;
-            if(happiness[index]>0){
-                sum += happiness[index];
+            int top = pq.poll();
+            top -= counter;
+            if(top>0) {
+                ans += top;
             }
-            
-            index--;
             counter++;
         }
-        return sum;
+        
+        return ans;
     }
 }
