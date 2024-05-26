@@ -6,13 +6,9 @@ class Solution {
         for(int i=0;i<n;i++) {
             if(s.charAt(i)=='A') {
                 absent++;
-                late = 0;
-            }else if(s.charAt(i)=='L') {
-                late++;
-            }else if(s.charAt(i)=='P') {
-                late=0;
             }
-            
+               
+            late = (s.charAt(i)=='L') ? late + 1 : 0;
             if(late >= 3) {
                 return false;
             }
