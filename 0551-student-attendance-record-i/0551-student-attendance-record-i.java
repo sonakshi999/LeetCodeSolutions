@@ -8,7 +8,7 @@ class Solution {
                 absent++;
             }
                
-            late = (s.charAt(i)=='L') ? late + 1 : 0;
+            late = (s.charAt(i)=='L') ? late+1 : 0;
             if(late >= 3) {
                 return false;
             }
